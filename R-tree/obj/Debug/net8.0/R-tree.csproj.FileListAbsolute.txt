@@ -3,3 +3,13 @@ C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.AssemblyInfoI
 C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.AssemblyInfo.cs
 C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.csproj.CoreCompileInputs.cache
 C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.sourcelink.json
+C:\Users\victo\RiderProjects\R-tree\R-tree\bin\Debug\net8.0\R-tree.exe
+C:\Users\victo\RiderProjects\R-tree\R-tree\bin\Debug\net8.0\R-tree.deps.json
+C:\Users\victo\RiderProjects\R-tree\R-tree\bin\Debug\net8.0\R-tree.runtimeconfig.json
+C:\Users\victo\RiderProjects\R-tree\R-tree\bin\Debug\net8.0\R-tree.dll
+C:\Users\victo\RiderProjects\R-tree\R-tree\bin\Debug\net8.0\R-tree.pdb
+C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.dll
+C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\refint\R-tree.dll
+C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.pdb
+C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\R-tree.genruntimeconfig.cache
+C:\Users\victo\RiderProjects\R-tree\R-tree\obj\Debug\net8.0\ref\R-tree.dll
