@@ -10,7 +10,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string csvCoordinates = "coordinates.csv";
+        string csvCoordinates = "C:\\Users\\victo\\RiderProjects\\R-tree\\R-tree\\positions.csv";
 
         string[] lines = File.ReadAllLines(csvCoordinates);
         
@@ -24,31 +24,23 @@ class Program
         Console.WriteLine("Enter the radius (in km)>>");
         double radius = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-        string line;
-        while ((line = Console.ReadLine()) != null && line != "exit")
+        foreach (string line in lines)
         {
-            var parts = line.Split(',');
-            if (parts.Length < 2)
-            {
-                Console.WriteLine("Invalid Input");
-                continue;
-            }
-
-            double pointLat, pointLon;
-            if (!double.TryParse(parts[0], NumberStyles.Float, CultureInfo.InvariantCulture, out pointLat)
-                || !double.TryParse(parts[1], NumberStyles.Float, CultureInfo.InvariantCulture, out pointLon))
-            {
-                Console.WriteLine("Invalid input!");
-                continue;
-            }
+            var parts = line.Split(';');
+            double pointLat = double.Parse(parts[0], CultureInfo.InvariantCulture);
+            double pointLon = double.Parse(parts[1], CultureInfo.InvariantCulture);
+            string placeType = parts[2];
+            string additionalInfo = parts[3];
 
             double distance = CalculateDistance(userLat, userLon, pointLat, pointLon);
 
-            if (distance <= radius)
+            if (distance <= (radius*1000))
             {
-                Console.WriteLine($"Place at ({pointLat}, {pointLon}) is within {radius} km from you.");
+                Console.WriteLine($" TYPE {placeType} | LOCATION ({pointLat}, {pointLon}) | {additionalInfo}");
             }
         }
+        
+
     }
 
     static double CalculateDistance(double lat1, double lon1, double lat2, double lon2)
