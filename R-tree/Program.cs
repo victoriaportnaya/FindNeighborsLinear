@@ -5,21 +5,33 @@ using System;
 using System.IO;
 using System.Globalization;
 using Microsoft.VisualBasic.CompilerServices;
+using System.Diagnostics;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var sw = new Stopwatch();
+        sw.Start();
         string csvCoordinates = "C:\\Users\\victo\\RiderProjects\\R-tree\\R-tree\\positions.csv";
 
         string[] lines = File.ReadAllLines(csvCoordinates);
         
         // get user`s coordinates
         Console.WriteLine("Your latitude>>");
-        double userLat = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        double userLat;
+        while (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out userLat))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number for latitude:");
+        }
+
         
         Console.WriteLine("Enter your longitude>>");
-        double userLon = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        double userLon;
+        while (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out userLon))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number for longitude:");
+        }
         
         Console.WriteLine("Enter the radius (in km)>>");
         double radius = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
@@ -27,18 +39,18 @@ class Program
         foreach (string line in lines)
         {
             var parts = line.Split(';');
-            double pointLat = double.Parse(parts[0], CultureInfo.InvariantCulture);
-            double pointLon = double.Parse(parts[1], CultureInfo.InvariantCulture);
+            if (!double.TryParse(parts[0], out double latitude)) continue;
+            if (!double.TryParse(parts[1], out double longitude)) continue;
             string placeType = parts[2];
-            string additionalInfo = parts[3];
+            double distance = CalculateDistance(userLat, userLon, latitude, longitude);
 
-            double distance = CalculateDistance(userLat, userLon, pointLat, pointLon);
-
-            if (distance <= (radius*1000))
+            if (distance <= radius)
             {
-                Console.WriteLine($" TYPE {placeType} | LOCATION ({pointLat}, {pointLon}) | {additionalInfo}");
+                Console.WriteLine($" TYPE {placeType} | LOCATION ({latitude}, {longitude})");
             }
         }
+        sw.Stop();
+        Console.WriteLine($"Elapsed time: {sw.Elapsed}");
         
 
     }
